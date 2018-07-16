@@ -10,9 +10,6 @@ queue.buffering.max.messages<br/>
 
 ## 通过http请求方式,生产kafka数据<br/>
 curl "http://1.2.3.4:8093/test" -d "hello kafka"<br/>
- 
-   
-##Installation
 
 ### 1 install librdkafka
 
@@ -31,25 +28,25 @@ curl "http://1.2.3.4:8093/test" -d "hello kafka"<br/>
 
 ### 3 edit nginx.conf file
 
-```
-#user  nobody;
-worker_processes  4;
-worker_cpu_affinity 0001 0010 0100 1000;
-error_log  logs/error.log;
-#error_log  logs/error.log  notice;
-#error_log  logs/error.log  info;
+   ```
+    #user  nobody;
+    worker_processes  4;
+    worker_cpu_affinity 0001 0010 0100 1000;
+    error_log  logs/error.log;
+    #error_log  logs/error.log  notice;
+    #error_log  logs/error.log  info;
 
-#pid        logs/nginx.pid;
+    #pid        logs/nginx.pid;
 
-worker_rlimit_nofile 655350;
-events {
-use epoll;
-    worker_connections  102400;
-    accept_mutex off;
-    multi_accept off;
-}
+    worker_rlimit_nofile 655350;
+    events {
+        use epoll;
+        worker_connections  102400;
+        accept_mutex off;
+        multi_accept off;
+    }
 
-http {
+    http {
 
 	keepalive_timeout  120;
 	keepalive_requests 8192; 
@@ -98,5 +95,5 @@ http {
 			root   html;
 		}
 	}
-}
+    }
 ```
