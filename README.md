@@ -1,19 +1,21 @@
-##声明
+# nginx-module-kafka-produce
+## 声明
 
-此模块是在 https://github.com/brg-liuwei/ngx_kafka_module 基础上改写，
-增加librdkafka中的属性 Batch.num.messages 
-queue.buffering.max.ms
-queue.buffering.max.messages
-后续topic会由用户请求url获取, kafka的实例放在共享内存中
-在此对brg_liuwei表示由衷的感谢。
+此模块是在 https://github.com/brg-liuwei/ngx_kafka_module 基础上改写<br/>
+增加librdkafka中的属性 Batch.num.messages <br/>
+queue.buffering.max.ms<br/>
+queue.buffering.max.messages<br/>
+后续topic会由用户请求url获取, kafka的实例放在共享内存中<br/>
+在此对brg_liuwei表示由衷的感谢。<br/>
 
-##Introduction
-
-This module is used to send post data from nginx to kafka.
-
+## 通过http请求方式,生产kafka数据<br/>
+### 完整的消费数据，需要调用两个接口<br/>
+curl "http://1.2.3.4:8093/test" -d "hello kafka"<br/>
+ 
+   
 ##Installation
 
-###1 install librdkafka
+### 1 install librdkafka
 
     git clone https://github.com/edenhill/librdkafka
     cd librdkafka
@@ -21,14 +23,15 @@ This module is used to send post data from nginx to kafka.
     make
     sudo make install
 
-###2 compile nginx with nginx kafka module
+### 2 compile nginx with nginx kafka module
 
     git clone https://github.com/taek007/nginx-module-kafka-produce.git
     cd /path/to/nginx
     ./configure --add-module=/path/to/nginx-module-kafka-produce
     make && make install
 
-###3 edit nginx.conf file
+### 3 edit nginx.conf file
+
 ```
 	#user  nobody;
 	worker_processes  4;
@@ -99,10 +102,3 @@ This module is used to send post data from nginx to kafka.
 		}
 	}
 ```
-
-###4 start nginx
-
-###5 test
-
-    curl "http://1.2.3.4:8093" -d "hello kafka"
-
