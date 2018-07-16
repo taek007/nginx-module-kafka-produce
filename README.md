@@ -9,7 +9,6 @@ queue.buffering.max.messages<br/>
 在此对brg_liuwei表示由衷的感谢。<br/>
 
 ## 通过http请求方式,生产kafka数据<br/>
-### 完整的消费数据，需要调用两个接口<br/>
 curl "http://1.2.3.4:8093/test" -d "hello kafka"<br/>
  
    
