@@ -27,11 +27,11 @@ curl "http://1.2.3.4:8093/test" -d "hello kafka"<br/>
     make && make install
 #### 2.1 动态模块
 	
-	```
+	
 	cd /home/source/nginx-1.10.3
 	./configure --prefix=/usr/local/nginx-module/  --add-dynamic-module=/home/project/nginx-module-kafka-produce/
 	make modules
-	```
+	
 	
 ### 3 edit nginx.conf file
 
