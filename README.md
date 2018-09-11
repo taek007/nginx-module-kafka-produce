@@ -97,4 +97,11 @@ curl "http://1.2.3.4:8093/test" -d "hello kafka"<br/>
 		}
 	}
 
-
+## 动态模块
+修改conf配
+CORE_LIBS="$CORE_LIBS -lrdkafka -lz -lpthread"
+ngx_module_type=HTTP
+ngx_module_name=ngx_http_my_module
+ngx_module_srcs="$ngx_addon_dir/ngx_http_kafka_module_produce.c"
+. auto/module
+ngx_addon_name=$ngx_module_name
