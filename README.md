@@ -27,7 +27,7 @@ queue.buffering.max.messages<br/>
 #### 2.1 动态模块
 	
     cd /home/source/nginx-1.10.3
-    ./configure --prefix=/usr/local/nginx-module/  --add-dynamic-module=/home/project/nginx-module-kafka-produce/
+    ./configure --add-dynamic-module=/home/project/nginx-module-kafka-produce/
     make modules
     ls objs
 	
@@ -105,9 +105,9 @@ queue.buffering.max.messages<br/>
 ## 动态模块
 修改conf配
 ```
-CORE_LIBS="$CORE_LIBS -lrdkafka -lz -lpthread"
 ngx_module_type=HTTP
-ngx_module_name=ngx_http_my_module
+ngx_module_name=ngx_http_kafka_module_produce
 ngx_module_srcs="$ngx_addon_dir/ngx_http_kafka_module_produce.c"
-. auto/module
 ngx_addon_name=$ngx_module_name
+ngx_module_libs=" -lrdkafka -lz -lpthread"
+. auto/module
