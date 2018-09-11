@@ -9,34 +9,34 @@ queue.buffering.max.messages<br/>
 在此对brg_liuwei表示由衷的感谢。<br/>
 
 ## 通过http请求方式,生产kafka数据<br/>
-curl "http://1.2.3.4:8093/test" -d "hello kafka"<br/>
+    curl "http://1.2.3.4:8093/test" -d "hello kafka"<br/>
 
 ### 1 install librdkafka
 
-git clone https://github.com/edenhill/librdkafka
-cd librdkafka
-./configure && make && make install
+    git clone https://github.com/edenhill/librdkafka
+    cd librdkafka
+    ./configure && make && make install
 
 ### 2 compile nginx with nginx kafka module
 
-git clone https://github.com/taek007/nginx-module-kafka-produce.git
-cd /path/to/nginx
-./configure --add-module=/path/to/nginx-module-kafka-produce
-make && make install
+    git clone https://github.com/taek007/nginx-module-kafka-produce.git
+    cd /path/to/nginx
+    ./configure --add-module=/path/to/nginx-module-kafka-produce
+    make && make install
 	
 #### 2.1 动态模块
 	
-cd /home/source/nginx-1.10.3
-./configure --prefix=/usr/local/nginx-module/  --add-dynamic-module=/home/project/nginx-module-kafka-produce/
-make modules
-ls objs
+    cd /home/source/nginx-1.10.3
+    ./configure --prefix=/usr/local/nginx-module/  --add-dynamic-module=/home/project/nginx-module-kafka-produce/
+    make modules
+    ls objs
 	
 ### 3 edit nginx.conf file
 
-	#user  nobody;
-	worker_processes  4;
-	worker_cpu_affinity 0001 0010 0100 1000;
-	error_log  logs/error.log;
+    #user  nobody;
+    worker_processes  4;
+    worker_cpu_affinity 0001 0010 0100 1000;
+    error_log  logs/error.log;
 	#error_log  logs/error.log  notice;
 	#error_log  logs/error.log  info;
 
